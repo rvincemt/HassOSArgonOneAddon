@@ -1,5 +1,5 @@
 {
-  "name": "ArgonOne Active Cooling",
-  "url": "https://github.com/adamoutler/HassOSArgonOne",
-  "maintainer": "Adam Outler <adamoutler@adamoutler.com>"
+  "name": "Custom Pi Active Cooling",
+  "url": "https://github.com/rvincemt/HassOSArgonOneAddon",
+  "maintainer": "Rod Maitim rvmaitim@gmail.com>"
 }
