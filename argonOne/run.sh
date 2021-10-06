@@ -78,7 +78,7 @@ action() {
   i2cset -y 1 0x0d 0x08 "${fanPercentHex}"
   i2cset -y 1 0x0d 0x07 0 
   returnValue=${?}
-  test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF} "${fanPercent}"" &
+  test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}" "${fanPercent}" &
   return ${returnValue}
 }
 
