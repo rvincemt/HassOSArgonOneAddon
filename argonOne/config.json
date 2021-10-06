@@ -1,6 +1,6 @@
 {
   "name": "ArgonOne Active Cooling",
-  "image": "rvmaitim/{arch}-custompifanhat",
+  "image": "rvmaitim/{arch}-hassosargonone",
   "version": "24.1",
   "slug": "argon_one_temp",
   "description": "Actively keeping your Argon One cool.",
