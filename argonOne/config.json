@@ -13,10 +13,10 @@
   "url": "https://community.home-assistant.io/t/argon-one-active-cooling-addon/262598/",
   "map": ["config", "ssl", "addons", "backup", "share", "media"],
   "options": {
-    "CorF": "F",
-    "LowRange": 130,
-    "MediumRange": 140,
-    "HighRange": 150,
+    "CorF": "C",
+    "LowRange": 20,
+    "MediumRange": 30,
+    "HighRange": 40,
     "QuietProfile": true,
     "Create a Fan Speed entity in Home Assistant": false,
     "Log current temperature every 30 seconds": true
