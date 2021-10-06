@@ -75,8 +75,8 @@ action() {
   fanPercentHex=$(printf '%x' "${fanPercent}")
   printf '%(%Y-%m-%d_%H:%M:%S)T'
   echo ": ${cpuTemp}${CorF} - Level ${fanLevel} - Fan ${fanPercent}% (${fanMode})";
-  i2cset -y 1 0x0d 0x08 "${fanPercentHex}"
-  i2cset -y 1 0x0d 0x07 0 
+  i2cset -y 1 0x0d 0x07 "${fanPercentHex}"
+  i2cset -y 1 0x0d 0x08 0 
   returnValue=${?}
   test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}" "${fanPercent}" &
   return ${returnValue}
@@ -107,7 +107,7 @@ if [ ! -e /dev/i2c-1 ]; then
   exit 1;
 fi
 
-echo "Detecting Layout of i2c, we expect to see \"1a\" here."
+echo "Detecting Layout of i2c, we expect to see \"0d\" here."
 i2cDetect=$(i2cdetect -y -a 1);
 echo -e "${i2cDetect}"
 
