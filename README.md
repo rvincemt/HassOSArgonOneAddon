@@ -1,1 +1,1 @@
-Forked from adamoutler/HassOSArgonOneAddon, under dev for Yahbom Pi Hats. 
+Forked from adamoutler/HassOSArgonOneAddon, under dev for Yahbom Pi Hats.
