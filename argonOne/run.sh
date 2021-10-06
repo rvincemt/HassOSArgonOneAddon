@@ -75,7 +75,8 @@ action() {
   fanPercentHex=$(printf '%x' "${fanPercent}")
   printf '%(%Y-%m-%d_%H:%M:%S)T'
   echo ": ${cpuTemp}${CorF} - Level ${fanLevel} - Fan ${fanPercent}% (${fanMode})";
-  i2cset -y 1 0x01a "${fanPercentHex}"
+  i2cset -y 1 0x0d 0x08 1
+  i2cset -y 1 0x0d 0x07 0 
   returnValue=${?}
   test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}" &
   return ${returnValue}
@@ -99,7 +100,7 @@ fanLevel=-1;
 previousFanLevel=-1;
 
 #Trap exits and set fan to 100% like a safe mode.
-trap 'echo "Failed ${LINENO}: $BASH_COMMAND";i2cset -y 1 0x01a 0x63;previousFanLevel=-1;fanLevel=-1; echo Safe Mode Activated!;' ERR EXIT INT TERM
+trap 'echo "Failed ${LINENO}: $BASH_COMMAND";i2cset -y 1 0x0d 0x07;previousFanLevel=-1;fanLevel=-1; echo Safe Mode Activated!;' ERR EXIT INT TERM
 
 if [ ! -e /dev/i2c-1 ]; then
   echo "Cannot find I2C port.  You must enable I2C for this add-on to operate properly";
@@ -110,7 +111,7 @@ echo "Detecting Layout of i2c, we expect to see \"1a\" here."
 i2cDetect=$(i2cdetect -y -a 1);
 echo -e "${i2cDetect}"
 
-if [[ "$i2cDetect" != *"1a"* ]]; then 
+if [[ "$i2cDetect" != *"0d"* ]]; then 
   echo "Argon One was not detected on i2c. Argon One will show a 1a on the i2c bus above. This add-on will not control temperature without a connection to Argon One.";
 else 
   echo "Settings initialized. Argon One Detected. Beginning monitor.."
