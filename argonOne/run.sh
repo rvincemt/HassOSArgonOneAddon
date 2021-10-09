@@ -76,8 +76,9 @@ action() {
   printf '%(%Y-%m-%d_%H:%M:%S)T'
   echo ": ${cpuTemp}${CorF} - Level ${fanLevel} - Fan ${fanPercent}% (${fanMode})";
   echo "${fanPercentHex}"
-  i2cset -y 1 0x0d 0x07 0x1
-  i2cset -y 1 0x0d 0x08 0x0
+  i2cset -y 1 0x0d 0x08 0x01
+  echo "Turn off light"
+  i2cset -y 1 0x0d 0x07 0x00
   returnValue=${?}
   test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}" "${fanPercent}" &
   return ${returnValue}
